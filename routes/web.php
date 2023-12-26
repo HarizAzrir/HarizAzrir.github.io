@@ -1,8 +1,10 @@
 <?php
 
+use App\Http\Controllers\ClubController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -18,7 +20,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
@@ -30,10 +31,18 @@ Route::middleware('auth')->group(function () {
     Route::get('/product/{product}/edit', [ProductController::class, 'edit'])->name('Products.edit');
     Route::put('/product/{product}/update', [ProductController::class, 'update'])->name('Products.update');
     Route::delete('/product/{product}/destroy', [ProductController::class, 'destroy'])->name('Products.destroy');
-   
+    
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+
+
+    Route::get('/club', [ClubController::class, 'index'])->name('clubs.index');
+    Route::get('/club/create', [ClubController::class, 'create'])->name('clubs.create');
+    Route::post('/club', [ClubController::class, 'store'])->name('clubs.store');
+    Route::get('/club/{club}/edit', [ClubController::class, 'edit'])->name('clubs.edit');
+    Route::put('/club/{club}/update', [ClubController::class, 'update'])->name('clubs.update');
+    Route::delete('/club/{club}/destroy', [ClubController::class, 'destroy'])->name('clubs.destroy');
 });
 
 require __DIR__.'/auth.php';
