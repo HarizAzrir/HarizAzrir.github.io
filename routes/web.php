@@ -20,6 +20,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+
+Route::get('/clubsuser', [ClubController::class, 'homepage'])->name('clubsuser_hariz.homepage');
+
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
@@ -37,12 +41,12 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
 
-    Route::get('/club', [ClubController::class, 'index'])->name('clubs.index');
-    Route::get('/club/create', [ClubController::class, 'create'])->name('clubs.create');
-    Route::post('/club', [ClubController::class, 'store'])->name('clubs.store');
-    Route::get('/club/{club}/edit', [ClubController::class, 'edit'])->name('clubs.edit');
-    Route::put('/club/{club}/update', [ClubController::class, 'update'])->name('clubs.update');
-    Route::delete('/club/{club}/destroy', [ClubController::class, 'destroy'])->name('clubs.destroy');
+    Route::get('/clubadmin', [ClubController::class, 'index'])->name('clubs.index');
+    Route::get('/clubadmin/create', [ClubController::class, 'create'])->name('clubs.create');
+    Route::post('/clubadmin', [ClubController::class, 'store'])->name('clubs.store');
+    Route::get('/clubadmin/{club}/edit', [ClubController::class, 'edit'])->name('clubs.edit');
+    Route::put('/clubadmin/{club}/update', [ClubController::class, 'update'])->name('clubs.update');
+    Route::delete('/clubadmin/{club}/destroy', [ClubController::class, 'destroy'])->name('clubs.destroy');
 });
 
 require __DIR__.'/auth.php';

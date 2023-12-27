@@ -6,9 +6,38 @@ use Illuminate\Http\Request;
 use App\Models\Club;
 class ClubController extends Controller
 {
+
+    public function homepage(Request $request)
+    {
+       
+        $allClubs = Club::all(); // Replace YourModel with the actual model you are using
+
+        // Get unique club names
+        $uniqueClubNames = $allClubs->unique('clubname')->pluck('clubname', 'id');
+
+        // Check if there is a filter in the request
+        if ($request->has('filter')) {
+            $filteredClub = Club::find($request->input('filter'));
+
+            // If the filtered club is found, display only that club
+            if ($filteredClub) {
+                $clubs = Club::where('clubname', $filteredClub->clubname)->get();
+            } else {
+                // If the filtered club is not found, display all clubs
+                $clubs = $allClubs;
+            }
+        } else {
+            // If there is no filter, display all clubs
+            $clubs = $allClubs;
+        }
+
+        return view('clubsuser_hariz.homepage', ['clubs' => $clubs, 'allClubs' => $uniqueClubNames]);
+    }
+
+
     public function index(Request $request)
     {
-        $allClubs = Club::all();
+        $allClubs = Club::all(); // Replace YourModel with the actual model you are using
 
         // Get unique club names
         $uniqueClubNames = $allClubs->unique('clubname')->pluck('clubname', 'id');
@@ -37,12 +66,15 @@ class ClubController extends Controller
         return view('clubs.create');
     }
 
-    
     public function store(Request $request) {
         $data = $request->validate([
             'clubname' => 'required',
-            'description' => 'nullable',
+            'club_nickname'=> "required",
             'president' => 'required',
+            'about' => 'nullable',
+            "email"=> "email",
+            'instagram' => 'nullable',
+            'contact_number'=>'nullable',
         ]);
 
         $newClub = Club::create($data);
@@ -57,8 +89,12 @@ class ClubController extends Controller
     public function update(Request $request, Club $club) {
         $data = $request->validate([
             'clubname' => 'required',
-            'description' => 'nullable',
+            'club_nickname'=> "required",
             'president' => 'required',
+            'about' => 'nullable',
+            "email"=> "email",
+            'instagram' => 'nullable',
+            'contact_number'=>'nullable',
         ]);
 
         $club ->update($data);

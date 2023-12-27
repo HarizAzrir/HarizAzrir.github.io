@@ -6,7 +6,7 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>Edit a product</h1>
+    <h1>Edit a Club</h1>
     <div>
         @if($errors->any())
         <ul>
@@ -20,24 +20,37 @@
         @csrf
         @method("put")
         <div>
-            <label>Name</label>
-            <input type="text" name="name" placeholder="Name" value="{{$club->name}}">
+            <label>Club Name</label>
+            <input type="text" name="clubname" placeholder="ClubName">
         </div>
         <div>
-            <label>Qty</label>
-            <input type="text" name="qty" placeholder="Qty" value="{{$club->qty}}">
+            <label>Club Nickname</label>
+            <input type="text" name="club_nickname" placeholder="ClubNickname">
         </div>
         <div>
-            <label>Price</label>
-            <input type="decimal" name="price" placeholder="Price" value="{{$club->price}}">
+            <label>President</label>
+            <input type="text" name="president" placeholder="President">
         </div>
         <div>
-            <label>Description</label>
-            <input type="text" name="description" placeholder="Description" value="{{$club->description}}">
+            <label>About</label>
+            <input type="text" name="about" placeholder="About">
+        </div>
+        <div>
+            <label>Email</label>
+            <input type="text" name="email" placeholder="Email">
+        </div>
+        <div>
+            <label>Instagram</label>
+            <input type="text" name="instagram" placeholder="Instagram">
+        </div>
+        <div>
+        <div>
+            <label>Contact Number</label>
+            <input type="text" name="contact_number" placeholder="ContactNumber">
         </div>
 
         <div>
-            <input type="submit" value="Update">
+            <input type="submit" value="Save the new club">
         </div>
 
     </form>

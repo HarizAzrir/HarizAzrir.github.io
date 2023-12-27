@@ -12,8 +12,12 @@ class Club extends Model
 
     protected $fillable = [
         "clubname",
-        "description",
+        "club_nickname",
         "president",
+        "about",
+        "email",
+        "instagram",
+        "contact_number",
     ];
 
 }

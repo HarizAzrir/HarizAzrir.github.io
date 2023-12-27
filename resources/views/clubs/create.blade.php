@@ -19,17 +19,34 @@
     <form method="post" action="{{route('clubs.store')}}">
         @csrf
         @method("post")
+
         <div>
-            <label>Name</label>
+            <label>Club Name</label>
             <input type="text" name="clubname" placeholder="ClubName">
         </div>
         <div>
-            <label>Description</label>
-            <input type="text" name="description" placeholder="Description">
+            <label>Club Nickname</label>
+            <input type="text" name="club_nickname" placeholder="ClubNickname">
         </div>
         <div>
-            <label>PresidentID</label>
+            <label>President</label>
             <input type="text" name="president" placeholder="President">
+        </div>
+        <div>
+            <label>About</label>
+            <input type="text" name="about" placeholder="About">
+        </div>
+        <div>
+            <label>Email</label>
+            <input type="text" name="email" placeholder="Email">
+        </div>
+        <div>
+            <label>Instagram</label>
+            <input type="text" name="instagram" placeholder="Instagram">
+        </div>
+        <div>
+            <label>Contact Number</label>
+            <input type="text" name="contact_number" placeholder="ContactNumber">
         </div>
 
         <div>

@@ -24,19 +24,23 @@
         <label for="filter">Filter by Name:</label>
         <select id="filter" name="filter">
             <option value="">All Clubs</option>
-            @foreach($allClubs as $clubId => $clubName)
-                <option value="{{$clubId}}" @if(request('filter') == $clubId) selected @endif>{{$clubName}}</option>
+            @foreach($allClubs as $clubId => $clubname)
+                <option value="{{$clubId}}" @if(request('filter') == $clubId) selected @endif>{{$clubname}}</option>
             @endforeach
         </select>
         <button type="submit">Filter</button>
     </form>
-
+    
         <table border="1">
             <tr>
                 <th>ID</th>
-                <th>ClubName</th>
-                <th>Description</th>
-                <th>President</th>
+                <th>Club name</th>
+                <th>Club nickname</th>
+                <th>Club president</th>
+                <th>About</th>
+                <th>Email</th>
+                <th>Instagram</th>
+                <th>Contact Number</th>
                 <th>Edit</th>
                 <th>Delete</th>
             </tr>
@@ -44,8 +48,12 @@
                 <tr>
                     <td>{{$club->id}}</td>
                     <td>{{$club->clubname}}</td>
-                    <td>{{$club->description}}</td>
+                    <td>{{$club->club_nickname}}</td>
                     <td>{{$club->president}}</td>
+                    <td>{{$club->about}}</td>
+                    <td>{{$club->email}}</td>
+                    <td>{{$club->instagram}}</td>
+                    <td>{{$club->contact_number}}</td>
                     <td>
                         <a href="{{route('clubs.edit', ['club' => $club])}}">Edit</a>
                     </td>
