@@ -16,7 +16,7 @@
         </ul>
         @endif
     </div>
-    <form method="post" action="{{route('clubs.store')}}">
+    <form enctype="multipart/form-data" method="post" action="{{ route('clubs.store') }}">
         @csrf
         @method("post")
 
@@ -48,6 +48,13 @@
             <label>Contact Number</label>
             <input type="text" name="contact_number" placeholder="ContactNumber">
         </div>
+
+    
+            <div class="mr-4">
+                <x-input-label for="profilepic" :value="__('Profile Picture')" />
+                <input name="image" class="form-control" type="file">
+            </div>
+
 
         <div>
             <input type="submit" value="Save the new club">

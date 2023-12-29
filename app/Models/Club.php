@@ -18,6 +18,15 @@ class Club extends Model
         "email",
         "instagram",
         "contact_number",
+        'image', // Make sure this line is present
+
     ];
 
+
+    public function getImageURL(){
+        if($this->image){
+            return url('storage/' .$this->image);
+        }
+        return "images/blankprofile.png";
+    }
 }

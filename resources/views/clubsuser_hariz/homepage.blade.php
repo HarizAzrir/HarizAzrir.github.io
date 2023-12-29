@@ -15,27 +15,31 @@
                 <!-- Swiper Container -->
                 <div class="swiper-container">
                     <div class="swiper-wrapper">
-                        @foreach($clubs as $club)
+                        @foreach ($clubs as $club)
                             <div class="swiper-slide">
-                                <div class="flex flex-col items-center p-20">
-                                    <img class="inline mb-2" src="images/Upg.jpg" alt="{{ $club->clubname }}" style="max-width: 100%; height: auto;">
-                                    <span>{{ $club->clubname }}</span>
+                                <div class="flex flex-col items-center p-4">
+                                    <img class="inline mb-2" src="images/Upg.jpg" alt="{{ $club->clubname }}"
+                                        style="max-width: 100%; height: auto;">
+                                    <span class="py-2">{{ $club->clubname }}</span>
                                 </div>
                             </div>
                         @endforeach
                     </div>
-    
+                </div>
+                
+
                     <!-- Add Navigation -->
                     <div class="swiper-button-next"></div>
                     <div class="swiper-button-prev"></div>
-    
+
                     <!-- Add Pagination if needed -->
                     <div class="swiper-pagination"></div>
                 </div>
             </div>
         </div>
     </div>
-    
+
+
     <!-- Initialize Swiper -->
     <script>
         var swiper = new Swiper('.swiper-container', {
@@ -52,6 +56,6 @@
             loop: true, // Enable if you want the slides to loop
         });
     </script>
-    
-    
+
+
 </x-app-layout>

@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Dashboard') }}
+            {{ __('Admin Dashboard') }}
         </h2>
     </x-slot>
 
@@ -11,7 +11,7 @@
                 <div class="p-6 text-gray-900">
                     {{ __("You're logged in!") }}
                     <br>
-                    <a href="{{route('clubs.index')}}" class="text-blue-500 hober:text-blue-950"> Product Page</a>
+                    <a href="{{route('clubs.index')}}" class="text-blue-500 hober:text-blue-950"> List of Clubs </a>
                 </div>
             </div>
         </div>

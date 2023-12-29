@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Club;
+use Illuminate\Support\Facades\Storage;
+
 class ClubController extends Controller
 {
 
@@ -66,21 +68,40 @@ class ClubController extends Controller
         return view('clubs.create');
     }
 
-    public function store(Request $request) {
-        $data = $request->validate([
-            'clubname' => 'required',
-            'club_nickname'=> "required",
-            'president' => 'required',
-            'about' => 'nullable',
-            "email"=> "email",
-            'instagram' => 'nullable',
-            'contact_number'=>'nullable',
-        ]);
 
-        $newClub = Club::create($data);
-        return redirect(route('clubs.index'));
+public function store(Request $request)
+{
+    $data = $request->validate([
+        'clubname' => 'required',
+        'club_nickname' => 'required',
+        'president' => 'required',
+        'about' => 'nullable',
+        'email' => 'nullable|email',
+        'instagram' => 'nullable',
+        'contact_number' => 'nullable',
+        'image' => 'image|mimes:jpeg,png,jpg,gif|max:2048', // Adjust the allowed image types and size
+    ]);
+
+    // Check if the club already has an image
+    if ($request->hasFile('image') && $request->user()->image) {
+        // Delete the old profile picture if it exists
+        Storage::disk('public')->delete($request->user()->image);
     }
 
+    // Handle image upload
+    if ($request->hasFile('image')) {
+        // Store the new profile picture
+        $imagePath = $request->file('image')->store('images', 'public');
+        $data['image'] = $imagePath;
+    }
+
+    // Create a new club with the provided data
+    $newClub = Club::create($data);
+
+    return redirect(route('clubs.index'))->with('success', 'Club created successfully');
+}
+
+    
 
     public function edit(Club $club) {
         return view('clubs.edit', ['club'=> $club]);
@@ -95,7 +116,14 @@ class ClubController extends Controller
             "email"=> "email",
             'instagram' => 'nullable',
             'contact_number'=>'nullable',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048', // Adjust the allowed image types and size
         ]);
+
+           // Handle image upload
+        if ($request->hasFile('image')) {
+            $imagePath = $request->file('image')->store('images', 'public');
+            $data['image'] = $imagePath;
+    }
 
         $club ->update($data);
 
