@@ -29,4 +29,6 @@ class Club extends Model
         }
         return "images/blankprofile.png";
     }
+
+    
 }

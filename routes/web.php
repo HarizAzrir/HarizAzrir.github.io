@@ -26,8 +26,6 @@ Route::get('/', function () {
 });
 
 
-Route::get('/clubsuser', [ClubController::class, 'homepage'])->name('clubsuser_hariz.homepage');
-
 
 Route::get('/home', [HomeController::class,'index'])->middleware(['auth', 'verified'])->name('home');
 
@@ -54,6 +52,12 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+
+
+    Route::get('/clubuser', [ClubController::class, 'homepage'])->name('clubuser_hariz.homepage');
+    // web.php
+    Route::get('/clubs/{club}', [ClubController::class, 'detail'])->name('clubuser_hariz.clubdetail');
+
 });
 
 require __DIR__.'/auth.php';

@@ -33,7 +33,7 @@ class ClubController extends Controller
             $clubs = $allClubs;
         }
 
-        return view('clubsuser_hariz.homepage', ['clubs' => $clubs, 'allClubs' => $uniqueClubNames]);
+        return view('clubuser_hariz.homepage', ['clubs' => $clubs, 'allClubs' => $uniqueClubNames]);
     }
 
 
@@ -136,5 +136,15 @@ public function store(Request $request)
         return redirect(route('clubs.index'))->with('success','Club has been deleted');
     }
 
+
+
+
+
+
+        // ClubController.php
+    public function detail(Club $club)
+    {
+        return view('clubuser_hariz.clubdetail', compact('club'));
+    }
     
 }
