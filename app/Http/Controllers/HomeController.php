@@ -17,7 +17,7 @@ class HomeController extends Controller
             }
 
             else if($usertype == "admin"){
-                return view('clubs.homepage');   //admin page
+                return view('adminhomepage');   //admin page
             }
 
             else {

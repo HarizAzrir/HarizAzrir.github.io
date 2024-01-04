@@ -15,7 +15,7 @@
         <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg relative">
             <!-- Add dropdown filter form -->
             <form method="get" action="{{ route('clubuser_hariz.homepage') }}" class="mb-4">
-                <label for="filter" class="block">Filter by Name:</label>
+                <label for="filter" class="block">Filter:</label>
                 <select id="filter" name="filter" class="border p-2">
                     <option value="">All Clubs</option>
                     @foreach($allClubs as $clubId => $clubname)
