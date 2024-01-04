@@ -30,8 +30,8 @@ Route::get('/', function () {
 
 Route::middleware(['auth', 'admin'])->group(function () {
 Route::get('/adminhomepage', [HomeController::class, 'index'])->name('adminhomepage');
-    
-Route::get('/post', [HomeController::class,'post']);
+Route::get('/userhomepage', [HomeController::class, 'userhomepage'])->name('dashboard');
+
 Route::get('/clubadmin', [ClubController::class, 'index'])->name('clubs.index');
 Route::get('/clubadmin/create', [ClubController::class, 'create'])->name('clubs.create');
 Route::post('/clubadmin', [ClubController::class, 'store'])->name('clubs.store');

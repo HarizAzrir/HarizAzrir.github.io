@@ -13,7 +13,7 @@
                     <br>
                     <a href="{{route('clubs.index')}}" class="text-blue-500 hober:text-blue-950"> Product Page</a>
                 </div>
-            </div>
+            </div>`
         </div>
     </div>
 </x-app-layout>

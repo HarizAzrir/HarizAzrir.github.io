@@ -27,6 +27,16 @@ class HomeController extends Controller
     }
 
 
+    public function userhomepage(){
+
+        return view("dashboard");
+    }
+
+    public function adminhomepage(){
+
+        return view("adminhomepage");
+    }
+
     public function post(){
         return view("post");
     }

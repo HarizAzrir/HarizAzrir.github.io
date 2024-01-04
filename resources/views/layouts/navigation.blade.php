@@ -18,7 +18,9 @@
                     <x-nav-link :href="route('clubuser_hariz.homepage')" :active="request()->routeIs('clubuser')">
                         {{ __('Clubs') }}
                     </x-nav-link>
-                
+                    <x-nav-link :href="route('clubuser_hariz.homepage')" :active="request()->routeIs('clubuser')">
+                        {{ __('Events') }}
+                    </x-nav-link>
     
                 </div>
             </div>
